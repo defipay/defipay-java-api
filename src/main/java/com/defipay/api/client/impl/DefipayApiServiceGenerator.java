@@ -67,7 +67,7 @@ public class DefipayApiServiceGenerator {
             if (response.isSuccessful()) {
                 return response.body();
             } else {
-                DefipayApiError apiError = getCoboApiError(response);
+                DefipayApiError apiError = getDefipayApiError(response);
                 return (T) new ApiResponse<>(
                         null, false, apiError.getErrorCode(),
                         apiError.getErrorMessage()
@@ -81,7 +81,7 @@ public class DefipayApiServiceGenerator {
     /**
      * Extracts and converts the response error body into an object.
      */
-    public static DefipayApiError getCoboApiError(Response<?> response) throws IOException, DefipayApiException {
+    public static DefipayApiError getDefipayApiError(Response<?> response) throws IOException, DefipayApiException {
         //System.out.println(response.errorBody().string());
         ResponseBody errorBody = response.errorBody();
         //System.out.println(errorBody.string());

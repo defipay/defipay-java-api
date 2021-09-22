@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class DefipayJavaApiApplicationTests extends TestCase {
 
-    private final String apiSecret = "your api secret";
+    private final String apiSecret = "34513498c5de58d69a6b3f75c6d6452602aec93de28dfbaa70e3716071c9aaeb";
     private DefipayApiRestClient client;
 
     public void setUp() throws Exception {
@@ -28,19 +28,25 @@ public class DefipayJavaApiApplicationTests extends TestCase {
                 true).newRestClient();
     }
 
-    public void tearDown() {
+    public void tearDown11() {
+        String[] key = LocalSigner.generateKeyPair();
+        System.out.println(key[0]);
+        System.out.println(key[1]);
     }
 
     public void testCreateOrder() {
-        CreateOrderRequest request = new CreateOrderRequest();
-        request.setNotifyUrl("http://xcsewvb.ao/nhhcn");
-        request.setReturnUrl("http://xcsewvb.ao/nhhcn");
-        request.setAmount("1000");
-        request.setCurrency("USDT");
-        request.setMemberTransNo(getMemberTransNo(1));
-        request.setTokenIds("2");
-        ApiResponse<CreateOrderResponse> order = client.createOrder(request);
-        System.out.println(order);
+        String[] key = LocalSigner.generateKeyPair();
+        System.out.println(key[0]);
+        System.out.println(key[1]);
+//        CreateOrderRequest request = new CreateOrderRequest();
+//        request.setNotifyUrl("http://xcsewvb.ao/nhhcn");
+//        request.setReturnUrl("http://xcsewvb.ao/nhhcn");
+//        request.setAmount("1000");
+//        request.setCurrency("USDT");
+//        request.setMemberTransNo(getMemberTransNo(1));
+//        request.setTokenIds("2");
+//        ApiResponse<CreateOrderResponse> order = client.createOrder(request);
+//        System.out.println(order);
     }
 
     private String getMemberTransNo(int type){
