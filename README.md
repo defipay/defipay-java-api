@@ -64,11 +64,11 @@ apiKey的使用方法請參考[鏈接](http://doc.defipay.biz/index.html#title1_
 這些可以通過相應的工廠方法實例化 `DefipayApiClientFactory`
 
 ```java
-import ccom.defipay.api.client.DefipayApiClientFactory;
-import ccom.defipay.api.client.DefipayApiRestClient;
-import ccom.defipay.api.client.config.DefipayApiConfig;
-import ccom.defipay.api.client.config.Env;
-import ccom.defipay.api.client.impl.LocalSigner;
+import com.defipay.api.client.DefipayApiClientFactory;
+import com.defipay.api.client.DefipayApiRestClient;
+import com.defipay.api.client.config.DefipayApiConfig;
+import com.defipay.api.client.config.Env;
+import com.defipay.api.client.impl.LocalSigner;
 
 DefipayApiRestClient client = DefipayApiClientFactory.newInstance(
                 new LocalSigner(apiSecret),
