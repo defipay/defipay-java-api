@@ -17,6 +17,10 @@ public class RateDTO implements Serializable {
     // 汇率时间
     private Long rateTime;
 
+    private String base;
+
+    private String quote;
+
     public String getRate() {
         return rate;
     }
@@ -33,11 +37,29 @@ public class RateDTO implements Serializable {
         this.rateTime = rateTime;
     }
 
+    public String getBase() {
+        return base;
+    }
+
+    public void setBase(String base) {
+        this.base = base;
+    }
+
+    public String getQuote() {
+        return quote;
+    }
+
+    public void setQuote(String quote) {
+        this.quote = quote;
+    }
+
     @Override
     public String toString() {
         return "RateDTO{" +
                 "rate='" + rate + '\'' +
                 ", rateTime=" + rateTime +
+                ", base='" + base + '\'' +
+                ", quote='" + quote + '\'' +
                 '}';
     }
 }

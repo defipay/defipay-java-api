@@ -23,8 +23,8 @@ public class DefipayApiRestClientImpl implements DefipayApiRestClient {
 
     @Override
     public ApiResponse<CreateOrderResponse> createOrder(CreateOrderRequest request) {
-        return executeSync(defipayApiService.createOrder(request.getNotifyUrl() ,request.getNotifyUrl(), request.getMemberTransNo(), request.getAmount()
-                                                            ,request.getCurrency(), request.getTokenIds(), request.getMakingUp()));
+        return executeSync(defipayApiService.createOrder(request.getNotifyUrl() ,request.getReturnUrl(), request.getMemberTransNo(), request.getAmount()
+                                                            ,request.getCurrency(), request.getTokenIds(), request.getMakingUp(), request.getRedirectUrl()));
     }
 
     @Override
@@ -71,6 +71,11 @@ public class DefipayApiRestClientImpl implements DefipayApiRestClient {
     @Override
     public ApiResponse<RateDTO> queryRate(String base, String quote) {
         return executeSync(defipayApiService.queryRate(base, quote));
+    }
+
+    @Override
+    public ApiResponse<List<RateDTO>> queryRates(String bases, String quotes) {
+        return executeSync(defipayApiService.queryRates(bases, quotes));
     }
 
 }

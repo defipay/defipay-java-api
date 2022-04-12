@@ -25,6 +25,7 @@ defipay-java-api 是一個輕量級的 Java 庫，用於與[Defipay API](http://
      * [支持支付幣種查詢](#支持支付幣種查詢)
   * [匯率查詢](#匯率查詢)
      * [幣種匯率查詢](#幣種匯率查詢)
+     * [幣種匯率批量查詢](#幣種匯率批量查詢)
 
 ## 安裝
 
@@ -109,6 +110,7 @@ request.setNotifyUrl("http://xcsewvb.ao/nhhcn");
 request.setReturnUrl("http://xcsewvb.ao/nhhcn");
 request.setAmount("0.01");
 request.setCurrency("ETH");
+ request.setRedirectUrl("http://xcsewvb.ao/nhhcn");
 request.setMemberTransNo("testasdafasf001");
 ApiResponse<CreateOrderResponse> order = client.createOrder(request);
 ```
@@ -247,7 +249,20 @@ ApiResponse<RateDTO> rateDTOApiResponse = client.queryRate("ETH", "USDT");
 
 
 ```java
-RateDTO{rate='2941.9196987295191192656236054', rateTime=1651723212}
+RateDTO{rate='1135.5868545662968110948919688', rateTime=1655773990, base='null', quote='null'}
+```
+</details>
+
+#### 幣種匯率批量查詢
+```java
+ApiResponse<List<RateDTO>> rateDTOApiResponse = client.queryRates("ETH,BTC", "USDT");
+```
+<details>
+<summary>響應視圖</summary>
+
+
+```java
+[RateDTO{rate='1135.5868545662968110948919688', rateTime=1655773990, base='ETH', quote='USDT'}, RateDTO{rate='20488.59183040891258640896534', rateTime=1655862835, base='BTC', quote='USDT'}]
 ```
 </details>
 

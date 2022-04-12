@@ -9,15 +9,12 @@ import com.defipay.api.client.domain.response.external.CoinApiAssetInfoDTO;
 import com.defipay.api.client.impl.LocalSigner;
 import junit.framework.TestCase;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 
 public class DefipayJavaApiApplicationTests extends TestCase {
 
-    private final String apiSecret = "34513498c5de58d69a6b3f75c6d6452602aec93de28dfbaa70e3716071c9aaeb";
+    private final String apiSecret = "69d2ad1d4721e535a9a9ba5a83b2dd67366820bc6442a7d39171f58eb5cedf6d";
     private DefipayApiRestClient client;
 
     public void setUp() throws Exception {
@@ -35,26 +32,20 @@ public class DefipayJavaApiApplicationTests extends TestCase {
     }
 
     public void testCreateOrder() {
-        String[] key = LocalSigner.generateKeyPair();
-        System.out.println(key[0]);
-        System.out.println(key[1]);
-//        CreateOrderRequest request = new CreateOrderRequest();
-//        request.setNotifyUrl("http://xcsewvb.ao/nhhcn");
-//        request.setReturnUrl("http://xcsewvb.ao/nhhcn");
-//        request.setAmount("1000");
-//        request.setCurrency("USDT");
-//        request.setMemberTransNo(getMemberTransNo(1));
-//        request.setTokenIds("2");
-//        ApiResponse<CreateOrderResponse> order = client.createOrder(request);
-//        System.out.println(order);
+        CreateOrderRequest request = new CreateOrderRequest();
+        request.setNotifyUrl("http://xcsewvb.ao/nhhcn");
+        request.setReturnUrl("http://xcsewvb.ao/nhhcn");
+        request.setAmount("1000");
+        request.setCurrency("USDT");
+        request.setRedirectUrl("http://xcsewvb.ao/nhhcn");
+        request.setMemberTransNo(getMemberTransNo(1));
+        request.setTokenIds("2");
+        ApiResponse<CreateOrderResponse> order = client.createOrder(request);
+        System.out.println(order);
     }
 
     private String getMemberTransNo(int type){
-        Date date = new Date();
-        int random = new Random().nextInt(10000);
-        SimpleDateFormat yyyyMMddHHmmss = new SimpleDateFormat("yyyyMMddHHmmss");
-        String format = yyyyMMddHHmmss.format(date);
-        return type == 1?"B":"PB"+format+random;
+        return type == 1?"B"+ System.currentTimeMillis():"PB"+System.currentTimeMillis();
     }
 
 
@@ -104,6 +95,11 @@ public class DefipayJavaApiApplicationTests extends TestCase {
     }
     public void testQueryRate(){
         ApiResponse<RateDTO> rateDTOApiResponse = client.queryRate("ETH", "USDT");
+        System.out.println(rateDTOApiResponse);
+    }
+
+    public void testQueryRates(){
+        ApiResponse<List<RateDTO>> rateDTOApiResponse = client.queryRates("ETH,BTC", "USDT");
         System.out.println(rateDTOApiResponse);
     }
 }

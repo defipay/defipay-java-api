@@ -17,7 +17,7 @@ public interface DefipayApiService {
     Call<ApiResponse<CreateOrderResponse>> createOrder(@Field("notifyUrl") String notifyUrl, @Field("returnUrl") String returnUrl
                             , @Field("memberTransNo") String memberTransNo, @Field("amount") String amount
                             , @Field("currency") String currency, @Field("tokenIds") String tokenIds
-                            , @Field("makingUp") Boolean makingUp);
+                            , @Field("makingUp") Boolean makingUp, @Field("redirectUrl") String redirectUrl);
     
 
     @FormUrlEncoded
@@ -57,4 +57,9 @@ public interface DefipayApiService {
     @FormUrlEncoded
     @POST("/api-service/v1/external/rate/query")
     Call<ApiResponse<RateDTO>> queryRate(@Field("base") String base , @Field("quote") String quote);
+
+    @FormUrlEncoded
+    @POST("/api-service/v1/external/rate/batchQuery")
+    Call<ApiResponse<List<RateDTO>>> queryRates(@Field("bases") String bases , @Field("quotes") String quotes);
+
 }

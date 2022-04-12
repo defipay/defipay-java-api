@@ -26,21 +26,9 @@ public class CreateOrderRequest implements Serializable {
     private String tokenIds;
 
     private Boolean makingUp;
+    private String redirectUrl;
 
 
-
-    @Override
-    public String toString() {
-        return "CreateOrderRequest{" +
-                "notifyUrl='" + notifyUrl + '\'' +
-                ", returnUrl='" + returnUrl + '\'' +
-                ", memberTransNo='" + memberTransNo + '\'' +
-                ", amount='" + amount + '\'' +
-                ", currency='" + currency + '\'' +
-                ", tokenIds='" + tokenIds + '\'' +
-                ", makingUp=" + makingUp +
-                '}';
-    }
 
     public String getNotifyUrl() {
         return notifyUrl;
@@ -96,5 +84,27 @@ public class CreateOrderRequest implements Serializable {
 
     public void setMakingUp(Boolean makingUp) {
         this.makingUp = makingUp;
+    }
+
+    public String getRedirectUrl() {
+        return redirectUrl;
+    }
+
+    public void setRedirectUrl(String redirectUrl) {
+        this.redirectUrl = redirectUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "CreateOrderRequest{" +
+                "notifyUrl='" + notifyUrl + '\'' +
+                ", returnUrl='" + returnUrl + '\'' +
+                ", memberTransNo='" + memberTransNo + '\'' +
+                ", amount='" + amount + '\'' +
+                ", currency='" + currency + '\'' +
+                ", tokenIds='" + tokenIds + '\'' +
+                ", makingUp=" + makingUp +
+                ", redirectUrl='" + redirectUrl + '\'' +
+                '}';
     }
 }

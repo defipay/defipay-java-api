@@ -30,4 +30,6 @@ public interface DefipayApiRestClient {
      ApiResponse<OrderQueryResponse> getOrderDetail(String transNo);
 
      ApiResponse<RateDTO> queryRate(String base , String quote);
+
+     ApiResponse<List<RateDTO>> queryRates(String bases, String quotes);
 }
