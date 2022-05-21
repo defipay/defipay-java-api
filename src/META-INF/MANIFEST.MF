@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: com.defipay.api.client.callback.Demo
+Class-Path: lib/defipay-java-api.jar
+
