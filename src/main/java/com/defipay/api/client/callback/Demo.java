@@ -7,10 +7,10 @@ import com.defipay.api.client.impl.LocalSigner;
 import org.apache.commons.lang3.StringUtils;
 
 public class Demo {
-    private static final String defipayPubKey = "032f45930f652d72e0c90f71869dfe9af7d713b1f67dc2f7cb51f9572778b9c876";
+    private static final String defipayPubKey = "02a17fffb024cce6220ddf91b40711dc15fd8f830e23f6160c6a4eac8bc0eba820";
     static RouteHandler defipayCallback = ctx -> {
-        String timestamp = ctx.header("BIZ-TIMESTAMP");
-        String signature = ctx.header("BIZ-RESP-SIGNATURE");
+        String timestamp = ctx.header("BIZ_TIMESTAMP");
+        String signature = ctx.header("BIZ_RESP_SIGNATURE");
         boolean verifyResult = false;
         try {
             if (!StringUtils.isEmpty(timestamp) && !StringUtils.isEmpty(signature)) {

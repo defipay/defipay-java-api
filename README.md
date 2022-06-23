@@ -26,6 +26,7 @@ defipay-java-api 是一個輕量級的 Java 庫，用於與[Defipay API](http://
   * [匯率查詢](#匯率查詢)
      * [幣種匯率查詢](#幣種匯率查詢)
      * [幣種匯率批量查詢](#幣種匯率批量查詢)
+  * [交易通知API驗簽認證](#驗簽認證)
 
 ## 安裝
 
@@ -265,5 +266,33 @@ ApiResponse<List<RateDTO>> rateDTOApiResponse = client.queryRates("ETH,BTC", "US
 [RateDTO{rate='1135.5868545662968110948919688', rateTime=1655773990, base='ETH', quote='USDT'}, RateDTO{rate='20488.59183040891258640896534', rateTime=1655862835, base='BTC', quote='USDT'}]
 ```
 </details>
+
+### 交易通知API驗簽認證
+#### 驗簽認證
+
+```java
+public String defipayNotify(@RequestHeader("BIZ_TIMESTAMP") String timestamp
+            , @RequestHeader("BIZ_RESP_SIGNATURE") String signature, @RequestBody String body) {
+
+	log.info("defipay通知:BIZ_TIMESTAMP={},BIZ_RESP_SIGNATURE={},body={}", timestamp,signature,body);
+	/*消息验签*/
+	boolean verifyResult = false;
+	try {
+		if (!StringUtils.isEmpty(timestamp) && !StringUtils.isEmpty(signature)) {
+			String content = body + "|" + timestamp;
+			verifyResult = LocalSigner.verifyEcdsaSignature(content, signature
+					, (defipayIsPro ? Env.PROD : Env.SANDBOX).defipayPub);
+		}
+	} catch (Exception ex) {
+		log.error("defipay通知验签失败",ex);
+	}
+	if (!verifyResult){
+		return "failed";
+	}
+	//处理业务
+
+	return "ok";
+}
+```
 
 
