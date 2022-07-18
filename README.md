@@ -111,7 +111,6 @@ request.setNotifyUrl("http://xcsewvb.ao/nhhcn");
 request.setReturnUrl("http://xcsewvb.ao/nhhcn");
 request.setAmount("0.01");
 request.setCurrency("ETH");
- request.setRedirectUrl("http://xcsewvb.ao/nhhcn");
 request.setMemberTransNo("testasdafasf001");
 ApiResponse<CreateOrderResponse> order = client.createOrder(request);
 ```
