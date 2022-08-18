@@ -38,7 +38,7 @@ maven:
 <dependency>
   <groupId>io.github.defipay</groupId>
   <artifactId>defipay-java-api</artifactId>
-  <version>2.3.6</version>
+  <version>2.3.8</version>
 </dependency>
 ```
 
